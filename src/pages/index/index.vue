@@ -1,12 +1,7 @@
 <template>
   <div class="index">
     <!-- 搜索 -->
-    <a href="">
-      <div class="seek">
-        <icon type="search"/>
-        <span>搜索</span>
-      </div>
-    </a>
+     <seek></seek>
     <!-- 轮播图 -->
     <swiper class="swiper"
   indicator-dots
@@ -48,7 +43,11 @@
 
 <script>
 import request from '../../utils/request.js'
+import seek from '../../components/seek'
 export default {
+  components: {
+    seek
+  },
   data () {
     return {
       imglist:{},
@@ -73,7 +72,6 @@ export default {
 
       try{
         const res = await request("https://www.zhengzhicheng.cn/api/public/v1/home/floordata")
-         console.log(res)
          const {message} =res.data
          this.crty = message
       } catch(error){console.log(error)}
