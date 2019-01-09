@@ -55,10 +55,14 @@
         this.rigthlist = this.catlist[index].children;
       },
       getData() {
+         wx.showLoading({
+        title: '加载中',
+      })
         request("https://itjustfun.cn/api/public/v1/categories").then(res => {
           const { data } = res.data;
           this.catlist = data;
           this.rigthlist = data[this.pitch].children;
+            wx.hideLoading()
         });
       }
     }
