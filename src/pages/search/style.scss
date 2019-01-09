@@ -1,0 +1,78 @@
+.a-seek{
+  width: 100%;
+  background-color: #eee;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  .seek{
+    margin-top: 10rpx;
+    width: 98%;
+    height:60rpx;
+    background-color: #fff;
+    border-radius:2px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    icon{
+      color: #999;
+      margin-right: 10rpx;
+      margin-left: 20rpx;
+    };
+    span{
+       color: #000;
+       font-size: 16px;
+    }
+  }
+}
+// 标题
+.title{
+    display: flex;
+   border: 1px solid #eee;
+    margin-top: 80rpx;
+    justify-content: space-between;
+  .title-txt{
+    line-height: 100rpx;
+    width: 33.3%;
+    text-align: center;
+  }
+  .active{
+    color: red;
+  }
+}
+//列表
+.box{
+  .list{
+    display: flex;
+    padding: 20rpx;
+    .left{
+      width: 200rpx;
+      img{
+        width: 180rpx;
+        height: 180rpx;
+      }
+    }
+    .right{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      .right-tex{
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .right-null{
+        color: red;
+        font-size: 18px;
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

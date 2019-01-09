@@ -16,9 +16,11 @@
         <div class="rigth-title">{{item.cat_name}}</div>
         <div class="rigth-imgs">
             <div class="rigth-data" v-for="(useitem,useindex) in item.children" :key="useindex">
-          <!-- <img :src="`https://itjustfun.cn/` + useitem.cat_icon" mode="aspectFill"> -->
-            <img :src="'https://itjustfun.cn/' + useitem.cat_icon" mode="aspectFill">
-          <p>{{useitem.cat_name}}</p>
+        <!-- 通过a标签跳转,传递参数 -->
+            <a :href="'/pages/search/main?key=' + useitem.cat_name">
+             <img :src="'https://itjustfun.cn/' + useitem.cat_icon" mode="aspectFill">
+             <p>{{useitem.cat_name}}</p>
+           </a>
         </div>
         </div>
       </div>
@@ -50,7 +52,7 @@
         // 给当前li动态添加class
         this.pitch = index;
         // 改变右侧
-        this.rigthlist =this.catlist[index].children;
+        this.rigthlist = this.catlist[index].children;
       },
       getData() {
         request("https://itjustfun.cn/api/public/v1/categories").then(res => {

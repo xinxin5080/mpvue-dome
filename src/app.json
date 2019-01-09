@@ -4,7 +4,8 @@
     "pages/counter/main",
     "pages/category/main",
     "pages/cart/main",
-    "pages/personal/main"
+    "pages/personal/main",
+    "pages/search/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

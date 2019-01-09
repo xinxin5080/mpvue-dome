@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -52,7 +52,14 @@
 				{
 					"id": -1,
 					"name": "vuex",
-					"pathName": "pages/counter/main"
+					"pathName": "pages/counter/main",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "搜索",
+					"pathName": "pages/search/main",
+					"query": ""
 				}
 			]
 		}

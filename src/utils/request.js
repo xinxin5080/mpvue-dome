@@ -16,4 +16,9 @@ function request(url,method="GET",data={}) {
     })
   })
 }
+// 拓展get请求
+request.get = function(url, data){
+  // 返回promise
+  return request(url, "GET", data);
+}
 export default request;
