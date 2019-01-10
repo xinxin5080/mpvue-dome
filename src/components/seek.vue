@@ -1,5 +1,5 @@
 <template>
-    <a href="" class="a-seek">
+    <a href="/pages/seek/main" class="a-seek">
       <div class="seek">
         <icon type="search"/>
         <span>搜索</span>

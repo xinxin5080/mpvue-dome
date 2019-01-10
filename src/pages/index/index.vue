@@ -15,8 +15,11 @@
     </swiper-item>
   </block>
 </swiper>
+ <!-- 标签 -->
 <div class="classify">
-  <img :src="item.image_src" v-for="(item,index) in classify" :key="index">
+  <a :href="item.navigator_url" v-for="(item,index) in classify" :key="index">
+  <img :src="item.image_src">
+  </a>
 </div>
 <!-- 楼层 -->
 <div class="main" v-for="(item,index) in crty" :key="index">
@@ -63,6 +66,7 @@ export default {
         const res = await request("https://itjustfun.cn/api/public/v1/home/swiperdata")
          const {data} = res.data
           this.imglist = data
+          console.log(data)
       } catch(error){console.log(error)}
       try{
         const res = await request("https://itjustfun.cn/api/public/v1/home/catitems")

@@ -6,12 +6,12 @@
     display: flex;
     width: 100%;
     position: fixed;
+    margin-top: 80rpx;
     .list-left{
       width: 200rpx;
       height: 100%;
       background-color: #eee;
       overflow: scroll;
-      margin-top:80rpx;
       flex-shrink: 0;
       ul{
         li{
@@ -38,7 +38,6 @@
     }
     .list-box{
       overflow: auto;
-      margin-top:80rpx;
       height: 100%;
       flex: 1;
       .list-rigth{
