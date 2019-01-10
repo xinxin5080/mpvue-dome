@@ -16,6 +16,7 @@
     <!-- 列表 -->
     <div class="box">
       <div class="list" v-for="(item,index) in goodslist" :key="index">
+        <a :href="'/pages/goods_detail/main?goods_id='+ item.goods_id">
         <div class="left">
           <img :src="item.goods_big_logo" mode="aspectFill">
         </div>
@@ -24,9 +25,10 @@
             {{item.goods_name}}
           </div>
           <div class="right-null">
-            <span>$</span>{{item.goods_price}}
+            <span>¥</span>{{item.goods_price}}
           </div>
         </div>
+        </a>
       </div>
     </div>
     <!-- 底部 -->
@@ -69,7 +71,7 @@ export default {
       }
       ).then(res=>{
         const {goods} = res.data.data
-        console.log(res.data.data.total)
+        console.log(goods)
         // 将新旧数组相加
         // this.goodslist = this.goodslist.concat(goods);
         this.goodslist =[...this.goodslist,...goods];

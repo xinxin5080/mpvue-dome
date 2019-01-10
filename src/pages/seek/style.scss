@@ -1,0 +1,56 @@
+.box{
+ padding: 20rpx;
+ background-color: #eee;
+ .seek{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .seek-input{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 60rpx;
+    line-height:60rpx;
+    background-color: #fff;
+    padding: 0 20rpx;
+    icon{
+      height: 16px;
+      width: 16px;
+      margin-right: 20rpx;
+    }
+    input{
+      font-size: 14px;
+      flex: 1;
+    }
+  }
+  .bnt{
+    width: 150rpx;
+    border: 1px solid #999;
+    margin-left: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+ }
+}
+.history{
+  padding: 0 20rpx;
+  .history-txt{
+    display: flex;
+    justify-content: space-between;
+    height: 80rpx;
+    align-items: center;
+  }
+  .history-box{
+    display: flex;
+    flex-wrap: wrap;
+    .history-list{
+        padding: 10rpx 20rpx;
+        margin-right: 20rpx;
+        margin-bottom: 25rpx;
+        background-color: #eee;
+        font-size: 16px;
+    }
+  }
+}

@@ -44,33 +44,36 @@
 //列表
 .box{
   .list{
-    display: flex;
     padding: 20rpx;
-    .left{
-      width: 200rpx;
-      img{
-        width: 180rpx;
-        height: 180rpx;
-      }
-    }
-    .right{
-      flex: 1;
+    a{
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      
-      .right-tex{
-        font-size: 14px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
+      .left{
+        width: 200rpx;
+        flex-shrink: 0;
+        img{
+          width: 180rpx;
+          height: 180rpx;
+        }
       }
-      .right-null{
-        color: red;
-        font-size: 18px;
-        span{
+      .right{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .right-tex{
           font-size: 14px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+        .right-null{
+          color: red;
+          font-size: 18px;
+          span{
+            font-size: 14px;
+          }
         }
       }
     }

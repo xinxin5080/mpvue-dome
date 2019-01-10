@@ -29,13 +29,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "分页",
 					"pathName": "pages/category/main",
-					"query": ""
+					"query": "goods_id=43982"
 				},
 				{
 					"id": -1,
@@ -59,6 +59,18 @@
 					"id": 4,
 					"name": "搜索",
 					"pathName": "pages/search/main",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "详情",
+					"pathName": "pages/goods_detail/main",
+					"query": "goods_id=43982"
+				},
+				{
+					"id": -1,
+					"name": "ss",
+					"pathName": "pages/seek/main",
 					"query": ""
 				}
 			]
