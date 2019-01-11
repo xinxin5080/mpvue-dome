@@ -57,7 +57,7 @@
       </div>
       <div class="foot-bnt">
         <span>加入购物车</span>
-        <span>立即购买</span>
+        <navigator class="add" url="/pages/cart/main" open-type="switchTab">立即购买</navigator>
       </div>
     </div>
   </div>

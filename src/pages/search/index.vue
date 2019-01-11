@@ -4,7 +4,7 @@
     <a href="/pages/seek/main" class="a-seek">
       <div class="seek">
         <icon type="search"/>
-        <span>搜索</span>
+        <span>{{key}}</span>
       </div>
     </a>
     <!-- 标题  -->
@@ -47,7 +47,8 @@ export default {
       pagenum:1,
       goodslist:{},
       isloading:false, //是否加载
-      istxt:true //底部文字
+      istxt:true, //底部文字
+      key:''//传递过来的参数
     }
   },
   methods: {
@@ -70,8 +71,8 @@ export default {
         pagenum:this.pagenum
       }
       ).then(res=>{
+        // console.log(res)
         const {goods} = res.data.data
-        console.log(goods)
         // 将新旧数组相加
         // this.goodslist = this.goodslist.concat(goods);
         this.goodslist =[...this.goodslist,...goods];
@@ -93,6 +94,7 @@ export default {
   onLoad(query){
     const {key} = query
     this.key = key
+    // console.log(key)
     //请求数据
      this.init()
   },
