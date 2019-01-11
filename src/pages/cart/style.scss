@@ -1,0 +1,145 @@
+.site{
+  padding: 0 20rpx;
+  border-bottom: 7px solid #f5f5f5;
+  .site-name{
+    display: flex;
+    justify-content: space-between;
+    line-height: 3;
+    font-size: 16px;
+    color: #333;
+    .rigth{
+      display: flex;
+      span{
+        margin-right: 20rpx;
+      }
+    }
+  }
+  .site-sh{
+    line-height: 3;
+    font-size: 16px;
+    color: #333;
+  }
+}
+// 商品列表
+.goods{
+  padding: 0 20rpx;
+  .title{
+    line-height: 3;
+    font-size: 16px;
+    border-bottom: 4px solid #f5f5f5;
+  }
+  .goods-list{
+    padding: 30rpx 0;
+    display: flex;
+    border-bottom: 2px solid #f5f5f5;
+    .goods-img{
+      display: flex;
+      align-items: center; 
+      .imgs{
+        width: 170rpx;
+        height: 190rpx;
+      }
+    }
+    .goods-rigth{
+      font-size: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .goods-txt{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .goods-button{
+        display: flex;
+        justify-content: space-between;
+        .num{
+         color: red;
+        }
+        .total{
+          display: flex;
+          div{
+            margin: 0 20rpx;
+            line-height: 50rpx;
+          }
+        }
+      }
+    }
+  }
+}
+// 底部
+.all{
+  padding: 0 20rpx;
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  background-color: #fff;
+  font-size: 15px;
+  .left{
+    width: 33.3%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    .qx{
+      margin-left: 20rpx;
+    }
+  }
+  .center{
+    width: 33.3%;
+    .heji{
+      line-height: 55rpx;
+      span{
+        color: #ea4451;
+        margin-left: 20rpx;
+      }
+    }
+    .yunfei{
+      line-height: 40rpx;
+      color: #999;
+      font-size: 12px;
+    }
+  }
+  .right{
+    flex: 1;
+    color: #fff;
+    background-color: #ea4451;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.cart-no{
+  margin-top: 100rpx;
+  .shop{
+    display: flex;
+    flex-wrap: wrap;
+    .top{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .img{
+      width: 150rpx;
+      height: 150rpx;
+      display: block;
+    }
+    span{
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #333;
+      margin-top: 40rpx;
+    }
+  }
+}
+// 图标
+.icon-xuanze,.icon-xuanze1{
+color: red;
+}
+.icon-jian, .icon-jia{
+  font-size: 28px;
+}
