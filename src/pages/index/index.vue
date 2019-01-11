@@ -62,7 +62,11 @@ export default {
     // async  await解决异步问题
     async getData(){
       // try catch捕获程序代码错误
-      try{
+      try{    
+        wx.showLoading({
+        title: '加载中',
+      })
+
         const res = await request("https://itjustfun.cn/api/public/v1/home/swiperdata")
          const {data} = res.data
           this.imglist = data
@@ -78,6 +82,7 @@ export default {
         const res = await request("https://www.zhengzhicheng.cn/api/public/v1/home/floordata")
          const {message} =res.data
          this.crty = message
+          wx.hideLoading()
       } catch(error){console.log(error)}
      
     }

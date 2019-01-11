@@ -14,8 +14,8 @@
         </div>
         <buttom class="bnt" v-if="inputdata" @click="headleoff">取消</buttom>
       </div>
-      <!-- 搜索列表 -->
-      <div class="show" v-if="inputdata">
+      <!-- 建议搜索列表 -->
+      <div class="show" v-if="inputdata" @click="headleshow">
         <a :href="'/pages/goods_detail/main?goods_id='+ item.goods_id"
         class="show-list" 
         v-for="(item,index) in list" :key="index">
@@ -30,9 +30,10 @@
         <icon type="clear" class="icon" @click="headleicon"></icon>
       </div>
       <div class="history-box">
-      <div class="history-list" v-for="(item,index) in history" :key="index">
+        <!-- 传递要查询的文字,跳转到商品列表页 -->
+      <a :href="'/pages/search/main?key='+item" class="history-list" v-for="(item,index) in history" :key="index">
         {{item}}
-      </div>
+      </a>
       
       </div>
     </div>
@@ -51,6 +52,17 @@ export default {
     }
   },
   methods: {
+    // 封装数据操作
+    init(){
+       // 将数据追加到前面
+         this.history.unshift(this.inputdata)
+        //  数组去重
+         this.history = new Set(this.history)
+        //  解构,因为unshift无法使用set类型
+        this.history =[...(this.history)]
+        // 将设置储存在本地
+         wx.setStorageSync('key', this.history)
+    },
     // 点击取消
     headleoff(){
       // 清空
@@ -59,14 +71,7 @@ export default {
     },
     // confirm事件,确定搜索
     headleconfirm(){
-      // 将数据追加到前面
-       this.history.unshift(this.inputdata)
-      //  数组去重
-       this.history = new Set(this.history)
-      //  解构,因为unshift无法使用set类型
-      this.history =[...(this.history)]
-      // 将设置储存在本地
-       wx.setStorageSync('key', this.history)
+       this.init()
     },
     // 点击清空历史纪录
     headleicon(){
@@ -91,6 +96,10 @@ export default {
         // 数据请求回来设置为不加载
          this.isloading = false
       })
+    },
+    // 点击建议搜索列表,将输入框的内容保存在历史表
+    headleshow(){
+     this.init()
     }
   }
 }
