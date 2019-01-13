@@ -52,7 +52,10 @@
           <!-- 跳转到购物车,跳到tab栏要加open-type="switchTab"  -->
         <navigator url="/pages/cart/main" open-type="switchTab" class="nav">
             <i class="iconfont icon-qicheqianlian-"></i>
-          <span>购物车</span>
+          <div class="shopping">
+            <div>购物车</div>
+            <span>({{Addnum}})</span>
+            </div>
         </navigator>
       </div>
       <div class="foot-bnt">
@@ -69,7 +72,25 @@ export default {
   data () {
     return {
       goods_id:'',
-      goodslist:{}
+      goodslist:{},
+      goods:{}//本地储存的对象
+    }
+  },
+   onShow(){
+    // 从本地获取数据
+  this.goods = wx.getStorageSync('goods')
+  },
+  computed:{
+     // 总数量
+    Addnum(){
+      let num = 0
+      Object.keys(this.goods).map(v=>{
+        // 判断状态为true才计算
+        if(this.goods[v].state){
+          num += this.goods[v].num
+        }
+      })
+      return num
     }
   },
   methods: {
@@ -90,6 +111,13 @@ export default {
       // 从本地获取数据
         let Data =wx.getStorageSync('goods')||{}
         // 判断有无相同的项
+       let is = this.goodslist.goods_id
+       Object.keys(Data).map(v=>{
+         if(v==is){
+          this.goods[v].num +=1
+          console.log(this.goods)
+         }
+       })
         // 通过中括号的形式读取对象的key
         Data[this.goodslist.goods_id] = this.goodslist
         // 数量=1
@@ -104,6 +132,7 @@ export default {
             title: '加入购物车成功',
             icon: 'success'
           })
+       this.goods = wx.getStorageSync('goods')
        
     }
   },
