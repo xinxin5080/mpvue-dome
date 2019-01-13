@@ -15,14 +15,21 @@
     }
   }
   .site-sh{
-    line-height: 3;
+    line-height: 1.5;
     font-size: 16px;
     color: #333;
+    display: flex;
+    div{
+      width: 150rpx;
+      flex-shrink: 0;
+    }
   }
 }
 // 商品列表
 .goods{
   padding: 0 20rpx;
+  overflow: auto;
+  margin-bottom: 100rpx;
   .title{
     line-height: 3;
     font-size: 16px;
@@ -36,8 +43,18 @@
       display: flex;
       align-items: center; 
       .imgs{
-        width: 170rpx;
+        width: 180rpx;
         height: 190rpx;
+      }
+      .icon{
+        width: 100rpx;
+        height: 100%;
+        position: relative;
+        i{
+          position: absolute;
+          left: 20%;
+          top: 40%;
+        }
       }
     }
     .goods-rigth{
@@ -130,15 +147,25 @@
     span{
       width: 100%;
       text-align: center;
-      font-size: 12px;
+      font-size: 14px;
       color: #333;
       margin-top: 40rpx;
     }
   }
 }
+// 新增收货地址
+.gain{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  line-height: 60rpx;
+  padding: 30rpx 20rpx;
+  font-size: 16px;
+}
 // 图标
 .icon-xuanze,.icon-xuanze1{
 color: red;
+font-size: 24px;
 }
 .icon-jian, .icon-jia{
   font-size: 28px;

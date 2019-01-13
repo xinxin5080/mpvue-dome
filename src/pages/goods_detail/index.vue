@@ -56,7 +56,7 @@
         </navigator>
       </div>
       <div class="foot-bnt">
-        <span>加入购物车</span>
+        <span @click="headleAddGoods">加入购物车</span>
         <navigator class="add" url="/pages/cart/main" open-type="switchTab">立即购买</navigator>
       </div>
     </div>
@@ -82,13 +82,35 @@ export default {
         // 给价格添加小数点
         data.goods_price=Number(data.goods_price).toFixed(2)
         this.goodslist = data
-        console.log(data)
+        // console.log(data)
       })
+    },
+    // 将商品信息以对象的形式储存在本地
+    headleAddGoods(){
+      // 从本地获取数据
+        let Data =wx.getStorageSync('goods')||{}
+        // 判断有无相同的项
+        // 通过中括号的形式读取对象的key
+        Data[this.goodslist.goods_id] = this.goodslist
+        // 数量=1
+        this.goodslist.num=1
+        // 状态
+        this.goodslist.state=true
+        // console.log(goodsList)
+        // 将对象储存在本地储存
+         wx.setStorageSync('goods', Data)
+        //  提示
+         wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+       
     }
   },
   // 页面加载时触发,通过参数query可获取url携带的参数
   onLoad(query){
-    console.log(query)
+    // console.log(query)
     this.goods_id = query.goods_id
     this.init()
   }
