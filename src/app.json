@@ -7,10 +7,11 @@
     "pages/personal/main",
     "pages/search/main",
     "pages/goods_detail/main",
-    "pages/seek/main"
+    "pages/seek/main",
+    "pages/enter_order/main"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#EB4450",
     "navigationBarTitleText": "斯品",
     "navigationBarTextStyle": "white"

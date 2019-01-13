@@ -10,9 +10,11 @@
   duration="500"
 >
   <block v-for="(item,index) in imglist" :key="index">
+    <a :href="item.navigator_url">
     <swiper-item>
       <image :src="item.image_src" class="slide-image" mode="aspectFill"/>
     </swiper-item>
+    </a>
   </block>
 </swiper>
  <!-- 标签 -->
@@ -45,6 +47,10 @@
         </div>
       </div>
     </div>
+    <!-- 回到顶部 -->
+    <div class="top" v-if="isshow" @click="headletop">
+      <span>top</span>
+    </div>
   </div>
 </template>
 
@@ -59,10 +65,30 @@
       return {
         imglist: {},
         classify: [],
-        crty: {}
+        crty: {},
+        isshow:false
       };
     },
+    // 下拉刷新
+  onPullDownRefresh(){
+    this.getData()
+  },
+  // 页面滚动事件
+  onPageScroll(Object){
+   let scrollTop = Object.scrollTop
+    if(scrollTop>50){
+      this.isshow = true
+    }else{
+        this.isshow = false
+    }
+  },
     methods: {
+      // 点击回到顶部
+      headletop(){
+        wx.pageScrollTo({
+          scrollTop: 0
+        })
+      },
       // async  await解决异步问题
       async getData() {
         // try catch捕获程序代码错误
@@ -75,7 +101,19 @@
             "https://itjustfun.cn/api/public/v1/home/swiperdata"
           );
           const { data } = res.data;
+          //navigator_url:"/pages/goods_detail?goods_id=55578"修改
+          //navigator_url:"/pages/goods_detail/main?goods_id=55578" 
+          data.forEach(v=>{
+            // 使用splic切割
+            const arr = v.navigator_url.split("?")
+            // 加上/main
+            arr[0]=arr[0]+"/main"
+            // 字符串拼接,以?号 arr[0]+arr[1]
+            const str =arr.join("?")
+            v.navigator_url =str
+          })
           this.imglist = data;
+          // console.log(data)
         } catch (error) {
           console.log(error);
         }
@@ -102,15 +140,14 @@
             "https://www.zhengzhicheng.cn/api/public/v1/home/floordata"
           );
           const { message } = res.data;
-          // message[0].query = "/pages/search/main?key=服装";
-          // message[1].query = "/pages/search/main?key=热";
-          // message[2].query = "/pages/search/main?key=爆款";
           console.log(message);
           this.crty = message;
           wx.hideLoading();
         } catch (error) {
           console.log(error);
         }
+      // 停止下拉刷新
+      wx.stopPullDownRefresh();
       }
     },
     mounted() {

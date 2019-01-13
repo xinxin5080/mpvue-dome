@@ -101,9 +101,8 @@ export default {
          wx.setStorageSync('goods', Data)
         //  提示
          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
+            title: '加入购物车成功',
+            icon: 'success'
           })
        
     }

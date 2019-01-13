@@ -74,7 +74,7 @@
         </div>
         <div class="yunfei">包含运费</div>
       </div>
-      <div class="right">
+      <div class="right" @click="Settlement">
         结算({{Addnum}})
       </div>
     </div>
@@ -91,6 +91,7 @@
 </template>
 
 <script>
+import request from "../../utils/request.js";
 export default {
   data () {
     return {
@@ -106,7 +107,8 @@ export default {
   onShow(){
     // 从本地获取数据
   this.goods = wx.getStorageSync('goods')
-    console.log(this.goods)
+  // 将地址保存在本地
+   wx.setStorageSync('site', this.site)
   },
   computed: {
     // 总价格
@@ -162,6 +164,7 @@ export default {
     // 切换状态
     headlexuanze(key){
       this.goods[key].state = !this.goods[key].state
+       wx.setStorageSync('goods', this.goods)
     },
     // 全选
     headleqx(){
@@ -171,6 +174,7 @@ export default {
       Object.keys(this.goods).forEach(v=>{
          this.goods[v].state = state
       })
+       wx.setStorageSync('goods', this.goods)
     },
     // 减
     headlejian(key){
@@ -197,6 +201,40 @@ export default {
        this.goods[key].num +=1
         wx.setStorageSync('goods', this.goods)
         this.goods = wx.getStorageSync('goods')
+    },
+    // 结算
+    Settlement(){
+      // 登录接口需要的信息
+      let login ={
+        order_price:this.Addnum,
+        consignee_addr:this.site.usesite,
+        goods:[]
+      }
+            // 通过map循环返回新的数组，数组的元素是由return返回的
+      Object.keys(this.goods).forEach(v => {
+
+        if( this.goods[v].state){
+          // 只选择状态选中的商品
+          login.goods.push({
+            goods_id: this.goods[v].goods_id,
+            goods_number: this.goods[v].num,
+            goods_price: +this.goods[v].goods_price
+          });
+        }
+      })
+      // 调用创建订单接口,在请求的时候进行拦截,判断有无token
+      request.auth("https://itjustfun.cn/api/public/v1/my/orders/create",login).then(res=>{
+        console.log(res)
+      //  提示
+        wx.showToast({
+            title: '支付页面',
+            icon: 'success'
+          })
+          // 跳转
+            wx.navigateTo({
+          url: "/pages/enter_order/main"
+      });
+      })
     }
   }
 }
